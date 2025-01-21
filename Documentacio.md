@@ -36,7 +36,7 @@ Aquesta col·lecció conté informació detallada sobre cada animal. Inclou un c
 
 #### Camps destacats:
 - **nom_comu** i **nom_cientific**: Per permetre cerques per nom comú o científic.
-- **habitat**: Defineix el tipus d'hàbitat de l’animal (ex: "aigua dolça", "mar" o "ocean").
+- **habitat**: Defineix el tipus d'hàbitat de l’animal.
 - **dieta**: Tipus de dieta (ex: "carnívor", "herbívor", "omnivor").
 - **imatges**: Llista d’objectes que contenen URL d’imatges i descripcions.
 - **comentaris**: Llista de comentaris associats a l’animal.
