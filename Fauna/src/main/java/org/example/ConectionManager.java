@@ -15,24 +15,24 @@ public class ConectionManager {
 
     public static String connectionString = "mongodb+srv://joelortizrivas:aa1234aa@castellet.uxh5e.mongodb.net/?retryWrites=true&w=majority&appName=Castellet";
 
-    public static MongoClient Client = null;
 
-    public static MongoClient getConnection() {
-
-        if (Client == null) {
+    public static MongoDatabase getConnection() {
 
         try {
 
-        Client= MongoClients.create(connectionString);
+            MongoClient Client= MongoClients.create(connectionString);
+            System.out.println("Connected");
 
-        System.out.println("Connected");
+        return Client.getDatabase("Fauna");
 
        } catch(MongoException e){
 
         e.printStackTrace();
+
         }
-        }
-        return Client;
+
+        return null;
+
     }
 
 }

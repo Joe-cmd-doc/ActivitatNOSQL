@@ -8,10 +8,8 @@ public class Main {
     public static void main(String[] args) {
 
 
-
         Model AnimalsDAO = new Model();
         Animals animal = AnimalsDAO.getAnimals();
-
         System.out.println(animal);
 
     }

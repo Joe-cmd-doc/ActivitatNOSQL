@@ -3,7 +3,7 @@ package org.example;
 public class Caracteristiques {
     private String longitud;
     private String pes;
-    private String espVida; // Cambié "EspVida" a "espVida" para seguir la convención de nombres en Java
+    private String espVida;
 
 
     public Caracteristiques(String longitud, String pes, String espVida) {
