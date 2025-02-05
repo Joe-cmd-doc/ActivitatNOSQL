@@ -7,11 +7,12 @@ import org.bson.Document;
 public class Main {
     public static void main(String[] args) {
 
-        ConectionManager.getConnection();
 
-        Model Animals = new Model();
-        Animals.getAnimals();
-        System.out.println(Animals);
+
+        Model AnimalsDAO = new Model();
+        Animals animal = AnimalsDAO.getAnimals();
+
+        System.out.println(animal);
 
     }
 }
