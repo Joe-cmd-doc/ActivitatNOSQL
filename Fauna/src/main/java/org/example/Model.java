@@ -28,9 +28,9 @@ public class Model {
         return new Animals(doc.getString("_id"),doc.getString("nom_comu"),doc.getString("nom_cientific"),doc.getString("descripcio"),doc.getString("habitat"),doc.getString("dieta"),doc.getString("comportament"),caracteristiques,doc.getString("data_creacio"));
         }
 
-        public void InsertAnimal(Document animal){
-
-        Animals.insertOne(animal);
+        public void InsertAnimal(Animals animal){
+        Document Animalss = toDocument(animal);
+        Animals.insertOne(Animalss);
 
         }
 
