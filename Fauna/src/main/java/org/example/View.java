@@ -55,5 +55,17 @@ public class View {
 
     }
 
+    public String[] AnimalperDate() {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Introdueix la data de creació de l'animal (1r rang, format: YYYY-MM-DD):");
+        String first = sc.nextLine();
+
+        System.out.println("Introdueix la data de creació de l'animal (2n rang, format: YYYY-MM-DD):");
+        String last = sc.nextLine();
+
+        return new String[]{first, last};
+    }
+
 
 }

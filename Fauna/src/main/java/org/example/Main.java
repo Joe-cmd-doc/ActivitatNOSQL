@@ -11,11 +11,11 @@ public class Main {
 
         switch (option){
             case 1:
-                //Afegir animal
+
                 AnimalsDAO.InsertAnimal(view.AfegirAnimal());
                 break;
             case 2:
-                //Cercar tots els animals
+
                 AnimalsDAO.getAllAnimalls();
                 break;
             case 3:
@@ -23,6 +23,11 @@ public class Main {
                 AnimalsDAO.getAnimalByname(view.mostrarAnimalperNom());
                 break;
             case 4:
+
+                String[] dates = view.AnimalperDate();
+                AnimalsDAO.searchAnimalBydate(dates[0], dates[1]);
+
+            case 5:
                 System.exit(0);
             default:
                 System.out.println("Opcion no valida");

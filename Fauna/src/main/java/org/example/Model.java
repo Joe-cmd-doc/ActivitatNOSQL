@@ -2,7 +2,9 @@ package org.example;
 
 
 import com.mongodb.client.*;
+import com.mongodb.client.model.Filters;
 import org.bson.Document;
+import org.bson.conversions.Bson;
 
 import static com.mongodb.client.model.Filters.eq;
 
@@ -58,6 +60,25 @@ public class Model {
 
         for (Document animal : documents) {
             System.out.println(animal.getString("nom_comu"));
+        }
+    }
+
+    public void searchAnimalBydate(String first, String last){
+        con = ConectionManager.getConnection();
+        Animals = con.getCollection("Animals");
+
+
+        Bson filter = Filters.and(
+                Filters.gte("data_creacio", first),
+                Filters.lte("data_creacio", last)
+        );
+
+
+        FindIterable<Document> docs = Animals.find(filter);
+
+        
+        for (Document doc : docs) {
+            System.out.println(doc.getString("nom_comu"));
         }
 
 
