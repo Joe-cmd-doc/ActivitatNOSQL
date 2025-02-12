@@ -1,5 +1,6 @@
 package org.example;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class View {
@@ -16,7 +17,7 @@ public class View {
         return sc.nextInt();
     }
 
-    public Animals AfegirAnimal() {
+    public Animal insertAnimal() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Introdueix el nom de l'animal:");
         String nom=sc.nextLine();
@@ -41,21 +42,22 @@ public class View {
         System.out.println("Introdueix la data de creacio de l'animal:");
         String creacio=sc.nextLine();
 
-        return new Animals("0",nom,nomC,breu,hab,dieta,comp,caracteristiques,creacio);
+        return new Animal(nom,nomC,breu,hab,dieta,comp,caracteristiques,creacio);
 
 
 
     }
-
-    public String mostrarAnimalperNom() {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Introdueix el nom de l'animal:");
-        String name= sc.next();
-        return name;
+    //Mostrar tots els animals amb la data especificada
+    public void showAnimalByDate(List<Animal> animals) {
+        System.out.println("-----Els animals amb la data que  has especificat-----");
+        for (Animal animal : animals) {
+            System.out.println(animal);
+        }
 
     }
 
-    public String[] AnimalperDate() {
+    //Preguntar el rang de dates dels Animals
+    public String[] askAnimalByDate() {
         Scanner sc = new Scanner(System.in);
 
         System.out.println("Introdueix la data de creació de l'animal (1r rang, format: YYYY-MM-DD):");
@@ -66,6 +68,30 @@ public class View {
 
         return new String[]{first, last};
     }
+
+
+    //Mostrem tots els animals
+   public void ShowAllAnimals(List<Animal> animal){
+        System.out.println("Llista de tots els animals");
+        for (Animal Animals : animal ){
+            System.out.println(Animals);
+        }
+   }
+
+//Demanem el nom de l'animal i el retornem
+   public String AskAnimalName(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Introdueix el nom de l'animal:");
+        String name= sc.nextLine();
+        return name;
+   }
+
+   //Mostrem l'animal que ens dona la bbdd
+    public void showAnimalByName(Animal animal){
+        System.out.println(animal);
+    }
+
+
 
 
 }

@@ -5,27 +5,27 @@ public class Main {
     public static void main(String[] args) {
 
 
-        Model AnimalsDAO = new Model();
+        CRUD AnimalsDAO = new CRUD();
         View view = new View();
         int option = view.mostrarMenu();
 
         switch (option){
             case 1:
-
-                AnimalsDAO.InsertAnimal(view.AfegirAnimal());
+                AnimalsDAO.showAnimalnames();
+                AnimalsDAO.InsertAnimal(view.insertAnimal());
                 break;
             case 2:
 
-                AnimalsDAO.getAllAnimalls();
+                view.ShowAllAnimals(AnimalsDAO.getAllAnimalls());
                 break;
             case 3:
-                AnimalsDAO.getAllAnimalls();
-                AnimalsDAO.getAnimalByname(view.mostrarAnimalperNom());
+                AnimalsDAO.showAnimalnames();
+                view.showAnimalByName(AnimalsDAO.getAnimalByname(view.AskAnimalName()));
                 break;
             case 4:
 
-                String[] dates = view.AnimalperDate();
-                AnimalsDAO.searchAnimalBydate(dates[0], dates[1]);
+                String[] dates = view.askAnimalByDate();
+                view.showAnimalByDate(AnimalsDAO.searchAnimalBydate(dates[0], dates[1]));
 
             case 5:
                 System.exit(0);

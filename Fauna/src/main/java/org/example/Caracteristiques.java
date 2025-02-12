@@ -1,5 +1,7 @@
 package org.example;
 
+import org.bson.Document;
+
 public class Caracteristiques {
     private String longitud;
     private String pes;
@@ -38,6 +40,9 @@ public class Caracteristiques {
         this.espVida = espVida;
     }
 
+    public Document toDocument(){
+        return new Document("longitud", this.longitud).append("pes", this.pes).append("espVida", this.espVida);
+    }
 
     @Override
     public String toString() {
@@ -46,5 +51,13 @@ public class Caracteristiques {
                 ", pes='" + pes + '\'' +
                 ", espVida='" + espVida + '\'' +
                 '}';
+    }
+
+    public static Caracteristiques fromDocument(Document doc) {
+        String longitud = doc.getString("longitud");
+        String pes = doc.getString("pes");
+        String espVida = doc.getString("espVida");
+
+        return new Caracteristiques(longitud, pes, espVida);
     }
 }

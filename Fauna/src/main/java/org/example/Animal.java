@@ -1,8 +1,8 @@
 package org.example;
+
 import org.bson.Document;
 
-public class Animals {
-    private String id;
+public class Animal {
     private String nomComu;
     private String nomCientific;
     private String descripcio;
@@ -13,11 +13,10 @@ public class Animals {
     private String dataCreacio;
 
     // Constructor
-    public Animals(String id, String nomComu, String nomCientific, String descripcio,
-                   String habitat, String dieta, String comportament,
-                   Caracteristiques caracteristiques, String dataCreacio) {
+    public Animal(String nomComu, String nomCientific, String descripcio,
+                  String habitat, String dieta, String comportament,
+                  Caracteristiques caracteristiques, String dataCreacio) {
 
-        this.id = id;
         this.nomComu = nomComu;
         this.nomCientific = nomCientific;
         this.descripcio = descripcio;
@@ -29,10 +28,6 @@ public class Animals {
     }
 
     // Getters
-    public String getId() {
-        return id;
-    }
-
     public String getNomComu() {
         return nomComu;
     }
@@ -66,10 +61,6 @@ public class Animals {
     }
 
     // Setters
-    public void setId(String id) {
-        this.id = id;
-    }
-
     public void setNomComu(String nomComu) {
         this.nomComu = nomComu;
     }
@@ -102,12 +93,45 @@ public class Animals {
         this.dataCreacio = dataCreacio;
     }
 
-    // toString
+
+    public Document toDocument() {
+        Document document = new Document()
+                .append("nom_comu", this.nomComu)
+                .append("nom_cientific", this.nomCientific)
+                .append("descripcio", this.descripcio)
+                .append("habitat", this.habitat)
+                .append("dieta", this.dieta)
+                .append("comportament", this.comportament)
+                .append("caracteristiques", this.caracteristiques)
+                .append("data_creacio", this.dataCreacio);
+
+        return document;
+    }
+
+
+    public static Animal fromDocument(Document doc) {
+        String nomComu = doc.getString("nom_comu");
+        String nomCientific = doc.getString("nom_cientific");
+        String descripcio = doc.getString("descripcio");
+        String habitat = doc.getString("habitat");
+        String dieta = doc.getString("dieta");
+        String comportament = doc.getString("comportament");
+        String dataCreacio = doc.getString("data_creacio");
+        Document caracteristiquesDoc = (Document) doc.get("caracteristiques");
+        Caracteristiques caracteristiques = Caracteristiques.fromDocument(caracteristiquesDoc);
+
+        return new Animal(nomComu, nomCientific, descripcio, habitat, dieta, comportament, caracteristiques, dataCreacio);
+    }
+
+
+
+
+
+    // Método toString para representar el objeto Animal como cadena
     @Override
     public String toString() {
-        return "Animals{" +
-                "id='" + id + '\'' +
-                ", nomComu='" + nomComu + '\'' +
+        return "Animal{" +
+                "nomComu='" + nomComu + '\'' +
                 ", nomCientific='" + nomCientific + '\'' +
                 ", descripcio='" + descripcio + '\'' +
                 ", habitat='" + habitat + '\'' +
