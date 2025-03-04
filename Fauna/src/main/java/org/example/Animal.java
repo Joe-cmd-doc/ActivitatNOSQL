@@ -2,6 +2,7 @@ package org.example;
 
 import org.bson.Document;
 
+
 public class Animal {
     private String nomComu;
     private String nomCientific;
@@ -102,7 +103,7 @@ public class Animal {
                 .append("habitat", this.habitat)
                 .append("dieta", this.dieta)
                 .append("comportament", this.comportament)
-                .append("caracteristiques", this.caracteristiques)
+                .append("caracteristiques", this.caracteristiques.toDocument())
                 .append("data_creacio", this.dataCreacio);
 
         return document;
