@@ -10,9 +10,7 @@ public class View {
         System.out.println("\n--- Gestió d'Animals ---");
         System.out.println("1. Afegir animal");
         System.out.println("2. Mostrar tots els animals");
-        System.out.println("3. Ver animals per nom");
-        System.out.println("4. Cercar per data");
-        System.out.println("5. Sortir");
+        System.out.println("3. Cercar per data");
         System.out.print("Escull una opció: ");
         return sc.nextInt();
     }

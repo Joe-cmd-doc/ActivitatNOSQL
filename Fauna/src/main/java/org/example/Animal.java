@@ -1,6 +1,6 @@
 package org.example;
 
-import org.bson.Document;
+import org.json.JSONObject;
 
 
 public class Animal {
@@ -95,40 +95,24 @@ public class Animal {
     }
 
 
-    public Document toDocument() {
-        Document document = new Document()
-                .append("nom_comu", this.nomComu)
-                .append("nom_cientific", this.nomCientific)
-                .append("descripcio", this.descripcio)
-                .append("habitat", this.habitat)
-                .append("dieta", this.dieta)
-                .append("comportament", this.comportament)
-                .append("caracteristiques", this.caracteristiques.toDocument())
-                .append("data_creacio", this.dataCreacio);
 
-        return document;
+    public String tojson(){
+        JSONObject json = new JSONObject();
+        json.put("nomComu", nomComu);
+        json.put("nomCientific", nomCientific);
+        json.put("descripcio", descripcio);
+        json.put("habitat", habitat);
+        json.put("dieta", dieta);
+        json.put("comportament", comportament);
+
+        // Aquí cambiamos para que se agregue el objeto JSON directamente
+        json.put("caracteristiques", new JSONObject(caracteristiques.tojson()));
+
+        json.put("dataCreacio", dataCreacio);
+
+        return json.toString();
     }
 
-
-    public static Animal fromDocument(Document doc) {
-        String nomComu = doc.getString("nom_comu");
-        String nomCientific = doc.getString("nom_cientific");
-        String descripcio = doc.getString("descripcio");
-        String habitat = doc.getString("habitat");
-        String dieta = doc.getString("dieta");
-        String comportament = doc.getString("comportament");
-        String dataCreacio = doc.getString("data_creacio");
-        Document caracteristiquesDoc = (Document) doc.get("caracteristiques");
-        Caracteristiques caracteristiques = Caracteristiques.fromDocument(caracteristiquesDoc);
-
-        return new Animal(nomComu, nomCientific, descripcio, habitat, dieta, comportament, caracteristiques, dataCreacio);
-    }
-
-
-
-
-
-    // Método toString para representar el objeto Animal como cadena
     @Override
     public String toString() {
         return "Animal{" +
@@ -142,4 +126,12 @@ public class Animal {
                 ", dataCreacio='" + dataCreacio + '\'' +
                 '}';
     }
+
+
+
+
+
+
+
+
 }

@@ -1,6 +1,6 @@
 package org.example;
 
-import org.bson.Document;
+import org.json.JSONObject;
 
 public class Caracteristiques {
     private String longitud;
@@ -40,10 +40,14 @@ public class Caracteristiques {
         this.espVida = espVida;
     }
 
-    public Document toDocument(){
-        return new Document("longitud", this.longitud).append("pes", this.pes).append("espVida", this.espVida);
-    }
 
+    public String tojson(){
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("longitud", longitud);
+        jsonObject.put("pes", pes);
+        jsonObject.put("espVida", espVida);
+        return jsonObject.toString();
+    }
     @Override
     public String toString() {
         return "Caracteristiques{" +
@@ -53,11 +57,5 @@ public class Caracteristiques {
                 '}';
     }
 
-    public static Caracteristiques fromDocument(Document doc) {
-        String longitud = doc.getString("longitud");
-        String pes = doc.getString("pes");
-        String espVida = doc.getString("espVida");
 
-        return new Caracteristiques(longitud, pes, espVida);
-    }
 }
